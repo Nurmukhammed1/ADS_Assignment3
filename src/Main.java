@@ -5,9 +5,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MyHashTable<MyTestingClass , Person> table =  new MyHashTable<MyTestingClass , Person>();
-
-
         BST<Integer, String> bst = new BST<>();
 
         bst.put(50, "A");
@@ -21,13 +18,21 @@ public class Main {
         System.out.println(bst.get(40));
         System.out.println(bst.get(60));
 
-        bst.delete(30);
+        bst.delete(50);
 
-        System.out.println(bst.get(30));
-        System.out.println(bst.get(70));
+        System.out.println(bst.get(50));
         System.out.println(bst.get(70));
 
+
+        MyHashTable<MyTestingClass , Person> table =  new MyHashTable<MyTestingClass , Person>();
+
+        table.put(new MyTestingClass("abc") , new Person("abc" , "def"));
+
+        for(int i = 0; i < 10000000; i++) {
+            table.put(new MyTestingClass(generateRandomString(5)), new Person(generateRandomString(5), generateRandomString(5)));
+        }
     }
+
     public static String generateRandomString(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         StringBuilder result = new StringBuilder();

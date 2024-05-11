@@ -42,7 +42,7 @@ public class MyHashTable<K, V> {
         }
 
         int index = hash(key);
-        HashNode<K, V> node = chainArray[index];
+        HashNode<K, V> node = new HashNode<>(key, value);
         node.next = chainArray[index];
         chainArray[index] = node;
         size++;
@@ -89,7 +89,6 @@ public class MyHashTable<K, V> {
                 } else {
                     prev.next = newNode.next;
                 }
-                //should I make newNode = null ???
                 size--;
                 return;
             }
@@ -125,6 +124,4 @@ public class MyHashTable<K, V> {
 
         return null;
     }
-
-
 }

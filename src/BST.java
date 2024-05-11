@@ -72,63 +72,59 @@ public class BST<K extends Comparable<K>, V> {
     }
 
     private void delete(Node current, K key) {
-        Node parent =null;
-        while(current!=null) {
+        Node parent = null;
+        while(current != null) {
             if (key.compareTo(current.key) < 0) {
-                parent=current;
-                current =current.left;
+                parent = current;
+                current = current.left;
             } else if (key.compareTo(current.key) > 0) {
                 parent = current;
                 current = current.right;
-            }
-            else
-            {
-                if(current.left==null && current.right==null)
-                {
-                    if(parent.left==current)
-                        parent.left=null;
-                    else if(parent.right==current)
-                        parent.right=null;
+            } else {
+                if(current.left == null && current.right == null) {
+                    if(parent.left == current)
+                        parent.left = null;
+                    else if(parent.right == current)
+                        parent.right = null;
 
                     current = null;
 
                     break;
-                }
-                else
-                {
-                    if(current.left==null)
-                    {
-                        if(parent.right==current)
-                            parent.right=current.right;
-                        else if(parent.left==current)
-                            parent.left=current.right;
-                        current=null;
+                } else {
+                    if(current.left == null) {
+                        if(parent.right == current)
+                            parent.right = current.right;
+                        else if(parent.left == current)
+                            parent.left = current.right;
+
+                        current = null;
                         break;
-                    }
-                    else if(current.right==null)
-                    {
-                        if(parent.left==current)
-                            parent.left=current.left;
-                        else if(parent.right==current)
-                            parent.right=current.left;
-                        current=null;
+                    } else if(current.right == null) {
+                        if(parent.left == current)
+                            parent.left = current.left;
+                        else if(parent.right == current)
+                            parent.right = current.left;
+
+                        current = null;
                         break;
-                    }
-                    else
-                    {
-                        Node temp=current;
-                        Node px=null;
-                        temp=temp.right;
-                        while(temp.left!=null)
-                        { px=temp;
-                            temp=temp.left;
+                    } else {
+                        Node temp = current;
+                        Node px = null;
+                        temp = temp.right;
+
+                        while(temp.left != null) {
+                            px = temp;
+                            temp = temp.left;
                         }
-                        current.key=temp.key;
-                        if(px.left==temp)
-                            px.left=null;
-                        else if(px.left==temp)
-                            px.right=null;
-                        temp=null;
+
+                        current.key = temp.key;
+
+                        if(px.left == temp)
+                            px.left = null;
+                        else if(px.left == temp)
+                            px.right = null;
+
+                        temp = null;
                         break;
                     }
                 }
